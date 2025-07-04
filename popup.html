@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MMX - Meta-Magic X </title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div id="mainContentContainer" style="display: none;">
+      <h1>Meta-Magic X</h1>
+      <hr>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; margin-top: 10px;">
+        <label for="generativeAiToggle" class="toggle-label">Created using generative AI tools?</label>
+        <label class="switch">
+          <input type="checkbox" id="generativeAiToggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div id="imageList">
+        <!-- Konten akan dimuat oleh JavaScript -->
+      </div>
+      <!-- Tombol Generate & Fill All dan panel status akan ditambahkan oleh popup.js di sini atau di dalam imageList -->
+    </div>
+  </div>
+  <script src="popup.min.js"></script>
+</body>
+</html>

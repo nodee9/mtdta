@@ -1,0 +1,150 @@
+/* Content script styles for MMX extension */
+
+/* Status indicator for processed items */
+.upload-item[data-MMX-processed="true"] {
+  position: relative;
+  border: 2px solid #34a853;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 2px 0;
+  transition: all 0.3s ease;
+}
+
+/* Processing indicator */
+.upload-item[data-MMX-processing="true"] {
+  position: relative;
+  border: 2px solid #1a73e8;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 2px 0;
+  opacity: 0.8;
+}
+
+.upload-item[data-MMX-processing="true"]::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #1a73e8;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Error state */
+.upload-item[data-MMX-error] {
+  border-color: #ea4335;
+  background-color: #fce8e6;
+}
+
+.upload-item[data-MMX-error]::before {
+  content: attr(data-MMX-error);
+  display: block;
+  color: #d93025;
+  font-size: 12px;
+  padding: 4px;
+  background-color: #fce8e6;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+
+/* Success indicator */
+.upload-item[data-MMX-success]::after {
+  content: "✓";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  background-color: #34a853;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Loading animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Tooltip for additional info */
+.MMX-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  margin-left: 4px;
+}
+
+.MMX-tooltip .MMX-tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #202124;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.MMX-tooltip:hover .MMX-tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Override any conflicting styles from the page */
+.MMX-field {
+  margin: 4px 0;
+}
+
+.MMX-field label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 2px;
+  font-size: 13px;
+}
+
+.MMX-field input,
+.MMX-field textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.MMX-field textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .MMX-field {
+    margin: 8px 0;
+  }
+  
+  .MMX-field label {
+    font-size: 14px;
+  }
+  
+  .MMX-field input,
+  .MMX-field textarea {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+}

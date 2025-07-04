@@ -1,0 +1,447 @@
+body {
+  min-width: 150px; /* Ensure minimum width for popup content */
+  /* Palet Warna:
+     Latar Belakang Utama: #2E073F (Ungu Tua)
+     Warna Font Utama: #BDD3F8 (Biru/Abu-abu Muda)
+     Warna Aksen 1: #7A1CAC (Ungu Sedang)
+     Warna Aksen 2: #AD49E1 (Ungu Lebih Muda)
+  */
+  width: 100%;
+  box-sizing: border-box; /* Memastikan padding dimasukkan dalam perhitungan 100% width */
+  padding: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #2E073F; /* Latar Belakang Utama */
+  color: #EBD3F8; /* Warna Font Utama */
+  font-size: 12px; /* Ukuran font default */
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden; /* Mencegah konten keluar dari border-radius */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+h1 {
+  margin: 0;
+  color: #AD49E1; /* Warna Aksen 2 untuk judul */
+  font-size: 24px;
+  font-weight: 700;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  color: #AD49E1; 
+  background-color: #AD49E1;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: #BDD3F8; /* Warna Font Utama */
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #7A1CAC; /* Warna Aksen 1 untuk kontainer status */
+  color: #BDD3F8;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #BDD3F8; /* Warna font utama untuk indikator default */
+}
+
+.status-indicator.active {
+  background-color: #8BC34A; /* Warna hijau yang lebih cocok dengan palet baru */
+  box-shadow: 0 0 8px #8BC34A80;
+}
+
+.status-indicator.error {
+  background-color: #FF5252; /* Warna merah yang lebih cocok */
+  box-shadow: 0 0 8px #FF525280;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn {
+  flex: initial;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background-color: #7A1CAC; /* Warna Aksen 1 */
+  color: #FFFFFF; /* Putih untuk kontras terbaik */
+}
+
+.btn-primary:hover {
+  background-color: #AD49E1; /* Warna Aksen 2 untuk hover */
+}
+
+.btn-secondary {
+  background-color: #AD49E1; /* Warna Aksen 2 */
+  color: #FFFFFF; /* Putih untuk kontras */
+}
+
+.btn-secondary:hover {
+  background-color: #7A1CAC; /* Warna Aksen 1 untuk hover */
+}
+
+.progress-container {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background-color: #BDD3F8; /* Warna font utama sebagai dasar progress bar */
+  opacity: 0.3;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background-color: #AD49E1; /* Warna Aksen 2 untuk progress fill */
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #BDD3F8; /* Warna Font Utama */
+  min-width: 36px;
+  text-align: right;
+}
+
+.log-container {
+  margin-top: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 12px;
+  background-color: rgba(0,0,0,0.2); /* Latar belakang sedikit transparan di atas ungu tua */
+  color: #BDD3F8;
+  border-radius: 6px;
+  padding: 8px;
+  border: 1px solid #AD49E1; /* Border dengan Aksen 2 */
+}
+
+.log-entry {
+  padding: 4px 0;
+  border-bottom: 1px solid #7A1CAC; /* Aksen 1 untuk pemisah */
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-time {
+  color: #BDD3F8;
+  opacity: 0.7;
+  margin-right: 4px;
+}
+
+.log-message {
+  color: #BDD3F8; /* Warna Font Utama */
+}
+
+.log-error {
+  color: #FF8A80; /* Warna merah muda untuk error agar kontras */
+}
+
+/* Debug Panel */
+.debug-panel {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: rgba(0,0,0,0.1);
+  border: 1px solid #7A1CAC;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #BDD3F8;
+}
+
+.debug-panel h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #AD49E1; /* Aksen 2 */
+  font-weight: 500;
+}
+
+.debug-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-small {
+  padding: 4px 8px;
+  font-size: 12px;
+  height: auto;
+  line-height: 1.4;
+}
+
+.debug-output {
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid #AD49E1;
+  border-radius: 4px;
+  padding: 8px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  font-size: 12px;
+  color: #BDD3F8;
+}
+
+.debug-output .success {
+  color: #8BC34A;
+}
+
+.debug-output .error {
+  color: #FF8A80;
+}
+
+.debug-output .warning {
+  color: #FFCA28; /* Kuning/Oranye yang lebih cocok */
+}
+
+.debug-output .info {
+  color: #90CAF9; /* Biru muda yang lebih cocok */
+}
+
+/* Gaya yang dipindahkan dari popup.html dan disesuaikan */
+
+/* Body untuk popup standar (lebar 150px) akan di-handle oleh inline style di popup.html jika diperlukan,
+   atau kita bisa membuat kelas khusus jika ingin mengontrolnya dari sini.
+   Untuk popup persisten, gaya body yang ada sudah (width: 100%, background-color: #2E073F, dll.) akan berlaku.
+*/
+
+/* .container dari popup.html akan menggunakan .container yang sudah ada di popup.css */
+/* h1 dari popup.html akan menggunakan h1 yang sudah ada di popup.css */
+
+/* .header dari popup.html (jika masih digunakan, bisa disesuaikan atau digabung) */
+.header { /* Ini mungkin perlu disesuaikan atau digabung dengan yang sudah ada */
+  margin-bottom: 15px; /* Dari HTML */
+  /* text-align: center; sudah ada di .header yang ada */
+}
+
+#imageList {
+  max-height: 500px; /* Dari HTML */
+  overflow-y: auto; /* Dari HTML */
+  padding: 10px; /* Dari HTML */
+  background: rgba(0, 0, 0, 0.1); /* Latar belakang sedikit transparan di atas ungu tua */
+  border-radius: 8px; /* Dari HTML */
+  /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); Dihilangkan atau disesuaikan dengan tema gelap */
+  border: 1px solid #7A1CAC; /* Aksen 1 untuk border */
+}
+
+.status-panel {
+  margin-top: 15px; /* Dari HTML */
+  padding: 15px; /* Dari HTML */
+  background-color: rgba(0,0,0,0.15); /* Latar belakang sedikit transparan */
+  border-radius: 8px; /* Dari HTML */
+  border: 1px solid #7A1CAC; /* Aksen 1 untuk border */
+}
+
+.status-title {
+  margin: 0 0 10px 0; /* Dari HTML */
+  color: #AD49E1; /* Aksen 2 untuk judul status */
+  font-size: 16px; /* Dari HTML */
+}
+
+.status-content {
+  background: rgba(0,0,0,0.2); /* Latar belakang lebih gelap untuk konten status */
+  padding: 12px; /* Dari HTML */
+  border-radius: 4px; /* Dari HTML */
+  border: 1px solid #AD49E1; /* Aksen 2 untuk border konten status */
+  font-family: monospace; /* Dari HTML */
+  white-space: pre-wrap; /* Dari HTML */
+  max-height: 300px; /* Dari HTML */
+  overflow-y: auto; /* Dari HTML */
+  color: #BDD3F8; /* Warna font utama */
+}
+
+/* .btn dari popup.html akan digabungkan dengan .btn, .btn-primary, .btn-secondary yang sudah ada.
+   Kita akan pastikan ada gaya default untuk .btn jika hanya kelas itu yang digunakan.
+   Gaya .btn yang sudah ada di atas (flex, padding, dll) akan tetap berlaku dan dilengkapi di sini.
+*/
+.btn { /* Gaya dasar untuk tombol jika hanya .btn yang digunakan, melengkapi yang sudah ada */
+  background-color: #7A1CAC; /* Aksen 1 sebagai default */
+  color: #EBD3F8; /* Putih */
+  /* border: none; sudah ada */
+  padding: 10px 20px; /* Dari HTML - mungkin perlu disesuaikan jika konflik dengan padding 8px 16px yang sudah ada */
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; diganti flex oleh .btn yang sudah ada */
+  font-size: 14px; /* Dari HTML */
+  margin: 4px 2px; /* Dari HTML */
+  /* cursor: pointer; sudah ada */
+  /* border-radius: 4px; sudah ada */
+  /* font-weight: bold; font-weight: 500; sudah ada */
+  /* transition: background-color 0.3s, color 0.3s; transition: all 0.2s ease; sudah ada */
+}
+
+.btn:disabled {
+  background-color: #50375f !important; /* Warna ungu yang lebih gelap dan pudar untuk disabled */
+  color: #8c7a99 !important; /* Styling untuk tombol 'Buka MMX' yang sekarang adalah ikon */
+}
+
+#openPersistentWindowBtn {
+  /* Ukuran dan margin diatur inline di JS untuk kemudahan saat pembuatan */
+  /* Jika perlu override atau tambahan styling: */
+  padding: 5px; /* Beri sedikit padding agar area klik lebih besar */
+  border-radius: 4px; /* Sedikit lengkungan */
+  transition: background-color 0.3s ease;
+}
+
+#openPersistentWindowBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Efek hover halus */
+}
+
+/* .refresh-btn spesifik dari popup.html */
+.refresh-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 5px 10px; /* Dari HTML */
+  background-color: #AD49E1; /* Aksen 2 */
+  color: #EBD3F8; /* Dari HTML */
+  border: none; /* Dari HTML */
+  border-radius: 4px; /* Dari HTML */
+  cursor: pointer; /* Dari HTML */
+  z-index: 1000; /* Dari HTML */
+  opacity: 0.3;
+  /* Ini adalah tombol spesifik, jadi tidak perlu flex:1 atau properti .btn umum lainnya kecuali diinginkan */
+}
+.refresh-btn:hover {
+  background-color: #7A1CAC; /* Aksen 1 untuk hover */
+}
+
+.error-message { /* Mengganti kelas .error dari popup.html */
+  color: #FF8A80; /* Warna merah muda yang sudah ada untuk error */
+  padding: 10px; /* Dari HTML */
+  background-color: rgba(255, 138, 128, 0.1); /* Latar belakang merah muda transparan */
+  border-radius: 4px; /* Dari HTML */
+  margin-bottom: 10px; /* Dari HTML */
+  border: 1px solid #FF8A80;
+}
+
+/* Toggle Switch Styling */
+.toggle-label { /* Kelas baru untuk label toggle */
+  font-size: 14px; /* Dari HTML style */
+  color: #EBD3F8; /* Warna Font Utama */
+  margin-right: 10px; /* Dari HTML style */
+  display: inline-flex; /* Agar align-items bekerja jika ada elemen lain di dalamnya */
+  align-items: center;
+}
+
+.switch {
+  position: relative; /* Dari HTML */
+  display: inline-block; /* Dari HTML */
+  width: 38px; /* Adjusted from 50px */
+  height: 18px; /* New height */
+  vertical-align: middle; /* Untuk alignment yang lebih baik dengan teks label */
+}
+
+.switch input {
+  opacity: 0; /* Dari HTML */
+  width: 0; /* Dari HTML */
+  height: 0; /* Dari HTML */
+}
+
+.slider {
+  position: absolute; /* Dari HTML */
+  cursor: pointer; /* Dari HTML */
+  top: 0; /* Dari HTML */
+  left: 0; /* Dari HTML */
+  right: 0; /* Dari HTML */
+  bottom: 0; /* Dari HTML */
+  background-color: #EBD3F8; /* Aksen 1 untuk slider off */
+  transition: .4s; /* Dari HTML */
+}
+
+.slider:before {
+  position: absolute; /* Dari HTML */
+  content: ""; /* Dari HTML */
+  height: 14px; /* Adjusted from 18px */
+  width: 14px; /* Adjusted from 18px */
+  left: 2px; /* Adjusted from 3px */
+  bottom: 2px; /* Adjusted from 3px */
+  background-color: #2E073F; /* Warna font utama untuk knob slider */
+  transition: .4s; /* Dari HTML */
+}
+
+input:checked + .slider {
+  background-color: #AD49E1; /* Aksen 2 untuk slider on */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 0 2px #2E073F, 0 0 0 3px #d4bdf8; /* Ring fokus yang lebih jelas */
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px); /* Adjusted from 26px */
+}
+
+.slider.round {
+  border-radius: 18px; /* Adjusted from 24px */
+}
+
+.slider.round:before {
+  border-radius: 50%; /* Dari HTML */
+}
+
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #7A1CAC; /* Aksen 1 untuk track scrollbar */
+  opacity: 0.5;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #AD49E1; /* Aksen 2 untuk thumb scrollbar */
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BDD3F8; /* Warna font utama untuk hover thumb */
+}
